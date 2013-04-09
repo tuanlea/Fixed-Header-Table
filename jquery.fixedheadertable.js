@@ -329,9 +329,8 @@
             	
             	$self.bind('scroll', function() {
             	    if (settings.fixedColumns > 0) {
-            	        var $fixedColumns = $wrapper.find('.fht-fixed-column');
-            	        
-            	        $fixedColumns.find('.fht-tbody table')
+			var $fixedColumnsBody = $wrapper.find('.fht-fixed-column .fht-tbody');
+            	        $fixedColumnsBody.children()
             	            .css({
             	                'margin-top': -$self.scrollTop()
             	            });
@@ -461,12 +460,15 @@
 
 		// bind mousewheel events
 		var maxTop = $fixedColumn.find('.fht-tbody .fht-table').height() - $fixedColumn.find('.fht-tbody').height();
-		$fixedColumn.find('.fht-table').bind('mousewheel', function(event, delta, deltaX, deltaY) {
+		$fixedColumn.find('.fht-tbody').delegate('.fht-tbody > *', 'mousewheel', function(event, delta, deltaX, deltaY) {
+		    console.log(this);
+		    console.log(event);
+		    console.log('delta: ', delta);
+		    console.log('deltaY:', deltaY);
 		    if (deltaY == 0) return;
 		    var top = parseInt($(this).css('marginTop'), 10) + (deltaY > 0 ? 120 : -120);
 		    if (top > 0) top = 0;
 		    if (top < -maxTop) top = -maxTop;
-		    $(this).css('marginTop', top);
 		    $fixedBody.find('.fht-tbody').scrollTop(-top).scroll();
 		    return false;
 		});
