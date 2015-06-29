@@ -1,5 +1,5 @@
 .divider {
-	margin-top: 40px;
+	margin: 20px 0;
 	}
 	
 .button {
@@ -49,18 +49,6 @@
 	width: 800px;
 	height: 500px;
 	}
-
-.height250 {
-        height: 250px;
-        overflow-x: auto;
-        overflow-y: auto;
-}
-
-.height400 {
-        height: 400px;
-        overflow-x: auto;
-        overflow-y: auto;
-}
 
 .fancyTable td, .fancyTable th {
 	/* appearance */
@@ -116,8 +104,6 @@
 	}
 
 .fancyTable thead tr th,
-.fancyTable thead tr td,
-.fancyTable tfoot tr th, 
 .fancyTable tfoot tr td {
 	/* appearance */
 	background-color: #8ca9cf;
